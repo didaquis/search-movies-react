@@ -21,6 +21,8 @@ export class SearchForm extends Component {
 				const { Search = [], totalResults = '0' } = results;
 				this.props.onResults(Search);
 			});
+
+		this.setState( {inputMovie: ''} );
 	}
 
 	render() {
@@ -32,9 +34,10 @@ export class SearchForm extends Component {
 							autoFocus
 							className="input" 
 							onChange={this._handleChange}
-							type="text" 
 							placeholder="Movie to search..." 
 							required
+							type="text" 
+							value={this.state.inputMovie} 
 						/>
 					</div>
 					 <div className="control">
