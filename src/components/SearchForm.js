@@ -13,28 +13,29 @@ export class SearchForm extends Component {
 
 	_handleSubmit = (e) => {
 		e.preventDefault();
-		console.table(this)
 		const { inputMovie } = this.state;
 
 		fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${inputMovie}`)
 			.then(res => res.json())
 			.then(results => {
-				const { Search, totalResults } = results;
-				console.log({ Search, totalResults });
+				const { Search = [], totalResults = '0' } = results;
 				this.props.onResults(Search);
 			});
 	}
 
 	render() {
 		return(
-			<form onSubmit={this._handleSubmit}>
+			<form onSubmit={this._handleSubmit} className="medium-margin-bottom">
 				<div className="field has-addons">
 					<div className="control">
 						<input 
+							autoFocus
 							className="input" 
 							onChange={this._handleChange}
 							type="text" 
-							placeholder="Movie to search..." />
+							placeholder="Movie to search..." 
+							required
+						/>
 					</div>
 					 <div className="control">
 						<button className="button is-info">
