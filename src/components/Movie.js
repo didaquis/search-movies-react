@@ -10,7 +10,7 @@ export class Movie extends Component {
 	}
 
 	render(){
-		const { poster, title, year } = this.props
+		const { poster, title, year } = this.props;
 
 		return(
 			<div className="card">
