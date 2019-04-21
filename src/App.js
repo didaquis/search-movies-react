@@ -1,7 +1,9 @@
-import React, { Component } from "react";
+import React, { Component, StrictMode } from "react";
 import { Title } from './components/Title';
 import { SearchForm } from './components/SearchForm';
 import { MoviesList } from './components/MoviesList';
+
+import { Detail } from './pages/Detail';
 
 import "./App.css";
 import 'bulma/css/bulma.css';
@@ -23,7 +25,7 @@ class App extends Component {
 
 		const resultsFixed = this.fixResultsWithoutImage(results);
 
-		this.setState({ results:resultsFixed, usedSearch: true })
+		this.setState({ results:resultsFixed, usedSearch: true });
 	}
 
 	_renderResults(){
@@ -33,17 +35,33 @@ class App extends Component {
 	}
 
 	render() {
+
+		const url = new URL(document.location);
+		const hasId = url.searchParams.has('id');
+
+		if (hasId) {
+			return (
+				<StrictMode>
+					<div className="App">
+						<Detail id={url.searchParams.get('id')} />
+					</div>
+				</StrictMode>
+			);
+		}
+
 		return (
-			<div className="App">
-				<Title>Search Movies</Title>
-				<div className='SearchForm-wrapper'>
-					<SearchForm onResults={this._handleResults} />
+			<StrictMode>
+				<div className="App">
+					<Title>Search Movies</Title>
+					<div className='SearchForm-wrapper'>
+						<SearchForm onResults={this._handleResults} />
+					</div>
+					{this.state.usedSearch
+						? this._renderResults()
+						: <small>Use the form to search a movie</small>
+					}
 				</div>
-				{this.state.usedSearch
-					? this._renderResults()
-					: <small>Use the form to search a movie</small>
-				}
-			</div>
+			</StrictMode>
 		);
 	}
 }
