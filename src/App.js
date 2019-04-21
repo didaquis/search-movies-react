@@ -12,22 +12,16 @@ class App extends Component {
 	render() {
 
 		const url = new URL(document.location);
-		const hasId = url.searchParams.has('id');
-
-		if (hasId) {
-			return (
-				<StrictMode>
-					<div className="App">
-						<Detail id={url.searchParams.get('id')} />
-					</div>
-				</StrictMode>
-			);
-		}
+		const Page = url.searchParams.has('id')
+			?
+				<Detail id={url.searchParams.get('id')}/>
+			:
+				<Home />
 
 		return (
 			<StrictMode>
 				<div className="App">
-					<Home />
+					{Page}
 				</div>
 			</StrictMode>
 		);
