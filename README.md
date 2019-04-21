@@ -23,6 +23,7 @@ The Open Movie Database => [OMDb API](http://www.omdbapi.com).
 * Descárgate el repositorio
 * Necesitarás tener instalado [npm](https://www.npmjs.com) y [node](https://nodejs.org/es/)
 * Sitúate en la raiz del proyecto e instala las dependencias: `npm install --y`
+* Configura un fichero `.env` en la raíz del proyecto y establece la API KEY de IMDB. Hay un fichero `_env` a modo de ejemplo
 * Ejecuta este comando para arrancar la aplicación: `npm start`
 
 

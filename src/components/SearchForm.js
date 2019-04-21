@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-const API_KEY = '2eccd85a';
+const API_KEY = process.env.REACT_APP_IMDB_API_KEY;
 
 export class SearchForm extends Component {
 	state = {
