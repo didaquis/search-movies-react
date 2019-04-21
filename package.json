@@ -1,6 +1,6 @@
 {
   "name": "search-movies-react",
-  "version": "0.1.8",
+  "version": "0.2.9",
   "private": true,
   "dependencies": {
     "bulma": "0.7.4",
@@ -12,6 +12,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "publish-to-surge" : "npm run build && cp build/index.html build/200.html && surge build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
