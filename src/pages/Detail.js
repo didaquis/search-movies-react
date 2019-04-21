@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
 
-import { Link } from 'react-router-dom';
-
 import PropTypes from 'prop-types';
+
+import { ButtonBackToHome } from '../components/ButtonBackToHome';
 
 const API_KEY = process.env.REACT_APP_IMDB_API_KEY;
 
@@ -44,7 +44,7 @@ export class Detail extends Component {
 
 		return (
 			<Fragment>
-				<Link className="button" to="/">Volver</Link>
+				<ButtonBackToHome />
 
 				<section className="hero">
 					<div className="hero-body">
