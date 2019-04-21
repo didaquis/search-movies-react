@@ -1,11 +1,19 @@
 import React, { Component, Fragment } from 'react';
+
+import { Link } from 'react-router-dom';
+
 import PropTypes from 'prop-types';
 
 const API_KEY = process.env.REACT_APP_IMDB_API_KEY;
 
 export class Detail extends Component {
 	static propTypes = {
-		id: PropTypes.string.isRequired
+		match: PropTypes.shape({
+			params: PropTypes.object,
+			isExact: PropTypes.bool,
+			path: PropTypes.string,
+			url: PropTypes.string,
+		})
 	}
 
 	state = {
@@ -20,12 +28,8 @@ export class Detail extends Component {
 			});
 	}
 
-	_goBack () {
-		window.history.back();
-	}
-
 	componentDidMount () {
-		const { id } = this.props;
+		const { id } = this.props.match.params;
 		this._fetchMovie({ id });
 	}
 
@@ -40,7 +44,7 @@ export class Detail extends Component {
 
 		return (
 			<Fragment>
-				<button className="button" onClick={this._goBack}>Volver</button>
+				<Link className="button" to="/">Volver</Link>
 
 				<section className="hero">
 					<div className="hero-body">
